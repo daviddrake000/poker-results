@@ -58,9 +58,21 @@ Covers money parsing and formatting, the settlement plan (every row of the
 acceptance table, plus randomised checks over thousands of games), the entry
 sheet's validation and running total, and the friendly error messages.
 
-## Deploy (Vercel)
+## Deploy
 
-The app is a static site, so any static host works. These steps use Vercel.
+The app is a static site, so any static host works.
+
+### Netlify (drag and drop)
+
+1. Make sure `.env.local` is filled in, then run `npm run build`. The settings
+   are built into the output, so Netlify needs none of its own.
+2. In Netlify, open the site → **Deploys**, and drag the `dist` folder onto the
+   page. The site keeps its address.
+
+`public/_redirects` sends every path to `index.html` so links like
+`/games/<id>` work on reload.
+
+### Vercel
 
 1. In the Vercel project's **Settings → Environment Variables**, set
    `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`. `.env.local` isn't
